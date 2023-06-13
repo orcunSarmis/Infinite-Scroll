@@ -9,7 +9,7 @@ const apiKey = 'NvIVWv8KKnQjShrLbdyLdljS2brb5F-GpPbE_LLb4tk';
 const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
 
 // helper func to set attributtes on dom
-function setAttribute(element, attributtes) {
+function setAttributes(element, attributtes) {
 	for (const key in attributtes) {
 		element.setAttribute(key, attributtes[key]);
 	}
@@ -53,5 +53,13 @@ async function getPhotos() {
 		// catch err
 	}
 }
+
+// check
+window.addEventListener('scroll', () => {
+	if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000) {
+		getPhotos();
+		console.log('load more')
+	}
+});
 
 getPhotos();
